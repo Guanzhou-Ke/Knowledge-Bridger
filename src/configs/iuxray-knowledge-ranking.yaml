@@ -1,0 +1,31 @@
+# Large multimodal model setting.
+lmm:
+  model_name: Qwen/Qwen2-VL-72B-Instruct-GPTQ-Int8
+  base_url: http://localhost:12345/v1
+  api_key: token-abc123
+
+
+ranking:
+  domain: general
+  clip_model_path: null
+  blip_model_path: Salesforce/blip-itm-large-coco
+  # [cosine, jaccard]
+  graph_similarity_method: cosine
+  generation_dir: './iuxray/knowledge-generation/train-mixed-0.3'
+  num_generations: 7
+  
+
+
+# Inference setting.
+inference:
+  gpu_ids: 6
+  save_path: ./iuxray/knowledge-generation/train-mixed-0.3
+  save_intervals: 16
+  seed: 2025
+  num_candidates: 7
+  max_token: 512
+  temperature: 0.1
+
+
+
+

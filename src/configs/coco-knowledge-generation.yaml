@@ -1,0 +1,46 @@
+# Large multimodal model setting.
+lmm:
+  model_name: Qwen/Qwen2-VL-72B-Instruct-GPTQ-Int8
+  base_url: http://localhost:12345/v1
+  api_key: token-abc123
+
+
+generator:
+  domain: general
+  base_model_name: stabilityai/stable-diffusion-xl-base-1.0
+  use_refiner: true
+  refiner_model_name: stabilityai/stable-diffusion-xl-refiner-1.0
+  n_steps: 50
+  high_noise_frac: 0.8
+
+
+
+
+dataset:
+  name: coco-classificaiton
+  train_root: '[your path]/COCO2014/train2014/'
+  val_root: '[your path]/COCO2014/val2014/'
+  clip_download_root: 'clip_models'
+  class_name_path: './data/mscoco/category.json'
+  train_metadata_path: './data/mscoco/train_anno.json'
+  test_metadata_path: './data/mscoco/val_anno.json'
+  # for reproducibility
+  missing_knowledge_path: ./coco/knowledge-extraction/train-mixed-0.3
+  missing_config: ./src/data/mscoco/missing-config/train-mixed-0.3.json
+  missing_set: train  # ['train', 'test']
+
+
+# Inference setting.
+inference:
+  domain: general
+  gpu_ids: 6
+  save_path: ./coco/knowledge-generation/train-mixed-0.3
+  save_intervals: 16
+  seed: 2025
+  num_candidates: 7
+  max_token: 512
+  temperature: 0.1
+
+
+
+

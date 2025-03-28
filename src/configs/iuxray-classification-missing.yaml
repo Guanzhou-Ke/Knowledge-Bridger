@@ -1,0 +1,35 @@
+dataset:
+  name: iuxray
+  train_root: '[your path]/IU-XRay/images'
+  val_root: '[your path]/IU-XRay/images'
+  clip_download_root: 'clip_models'
+  class_name_path: './data/iuxray/category.json'
+  train_metadata_path: './data/iuxray/trainset.json'
+  test_metadata_path: './data/iuxray/testset.json'
+  missing_config: ./src/data/iuxray/missing-config/train-mixed-0.7.json
+  is_missing: true
+  keep_raw: false
+  merge_metadata: true
+
+
+model:
+  name: CLIPModelBaseline
+  clip_download_root: 'clip_models'
+  num_labels: 105
+  finetune: true
+  dtype: fp32
+
+
+train:
+  exp_name: iuxray-missing-0.7
+  ckpt_dir: './iuxray-baseline/'
+  lr: 1e-4
+  epochs: 100
+  batch_size: 32
+  threshold: 0.5
+  seed: 2025
+
+loss:
+  type: 'focal'
+  alpha: 1.0
+  gamma: 2

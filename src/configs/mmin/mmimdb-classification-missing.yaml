@@ -1,0 +1,35 @@
+dataset:
+  name: mmimdb
+  train_root: '[your path]/mmimdb/mmimdb/dataset/'
+  val_root: '[your path]/mmimdb/mmimdb/dataset/'
+  clip_download_root: 'clip_models'
+  class_name_path: './data/mmimdb/category.json'
+  train_metadata_path: './data/mmimdb/trainset.json'
+  test_metadata_path: './data/mmimdb/testset.json'
+  # for reproducibility
+  missing_config: './data/mmimdb/missing-config/train-mixed-0.7.json'
+  is_missing: true
+  keep_raw: false
+  merge_metadata: false
+  
+model:
+  name: MMINModel
+  clip_download_root: 'clip_models'
+  num_labels: 27
+  finetune: false
+  dtype: fp32
+
+
+train:
+  exp_name: mmin-mmimdb-miss-0.7
+  ckpt_dir: './mmimdb-mmin-missing/'
+  lr: 1e-4
+  epochs: 100
+  batch_size: 32
+  threshold: 0.5
+  seed: 2025
+
+loss:
+  type: 'focal'
+  alpha: 1.0
+  gamma: 2

@@ -1,0 +1,33 @@
+# Large multimodal model setting.
+lmm:
+  # model_name: Qwen/Qwen2-VL-7B-Instruct
+  model_name: Qwen/Qwen2-VL-72B-Instruct-GPTQ-Int8
+  base_url: http://localhost:12345/v1
+  api_key: token-abc123
+
+
+dataset:
+  name: iuxray
+  train_root: '[your path]/IU-XRay/images'
+  val_root: '[your path]/IU-XRay/images'
+  clip_download_root: 'clip_models'
+  class_name_path: './data/iuxray/category.json'
+  train_metadata_path: './data/iuxray/trainset.json'
+  test_metadata_path: './data/iuxray/testset.json'
+  missing_config: ./src/data/iuxray/missing-config/train-mixed-0.3.json
+  missing_set: train  # ['train', 'test']
+
+
+
+# Inference setting.
+inference:
+  domain: medical
+  save_path: ./iuxray/knowledge-extraction/train-mixed-0.3
+  save_intervals: 16
+  seed: 2025
+  max_token: 512
+  temperature: 0.1
+
+
+
+
