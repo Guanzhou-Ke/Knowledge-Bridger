@@ -39,7 +39,7 @@ conda activate kb
 2. Install Vllm.
 
 ```
-pip install vllm
+pip install vllm==v0.6.4.post1
 ```
 
 3. Download the Large models.
