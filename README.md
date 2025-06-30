@@ -37,7 +37,7 @@ conda activate kb
 ```
 
 2. Install Vllm. (We really recommand using a new envrionment to install vllm to address packages conflict to our env. 
-Becuase we only need a OpenAI-Style API server to work with our framework.)
+Becuase we only need a OpenAI-Style API server to support our framework.)
 
 ```
 pip install vllm==v0.6.4.post1
